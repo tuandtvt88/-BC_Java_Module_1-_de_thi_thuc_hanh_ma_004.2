@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Điện Thoại</title>
+</head>
+<body>
+<h1>Quản Lý Điện Thoại</h1>
+<button onclick="themDienThoai()">Thêm Điện Thoại Mới</button>
+<div id="danhSachDienThoai"></div>
+
+<script>
+    class DienThoai {
+        constructor(ma, ten, hangSanXuat, gia) {
+            this.ma = ma;
+            this.ten = ten;
+            this.hangSanXuat = hangSanXuat;
+            this.gia = gia;
+        }
+        getMa() {
+            return this.ma;
+        }
+        setMa(ma) {
+            this.ma = ma;
+        }
+        getTen() {
+            return this.ten;
+        }
+        setTen(ten) {
+            this.ten = ten;
+        }
+        getHangSanXuat() {
+            return this.hangSanXuat;
+        }
+        setHangSanXuat(hangSanXuat) {
+            this.hangSanXuat = hangSanXuat;
+        }
+        getGia() {
+            return this.gia;
+        }
+        setGia(gia) {
+            this.gia = gia;
+        }
+        toString() {
+            return `Mã: ${this.ma}, Tên: ${this.ten}, Hãng: ${this.hangSanXuat}, Giá: ${this.gia}`;
+        }
+    }
+    const danhSachDienThoai = [];
+    function themDienThoai() {
+        const ma = prompt("Nhập mã điện thoại:");
+        const ten = prompt("Nhập tên điện thoại:");
+        const hangSanXuat = prompt("Nhập hãng sản xuất:");
+        const gia = parseFloat(prompt("Nhập giá điện thoại:"));
+
+        if (ma && ten && hangSanXuat && !isNaN(gia)) {
+            const dienThoai = new DienThoai(ma, ten, hangSanXuat, gia);
+            danhSachDienThoai.push(dienThoai);
+            hienThiDanhSachDienThoai();
+        } else {
+            alert("Thông tin nhập vào không hợp lệ!");
+        }
+    }
+    function hienThiDanhSachDienThoai() {
+        danhSachDienThoai.sort((a, b) => a.getTen().localeCompare(b.getTen()));
+        const danhSachDiv = document.getElementById('danhSachDienThoai');
+        danhSachDiv.innerHTML = '<h2>Danh Sách Điện Thoại</h2>';
+
+        danhSachDienThoai.forEach(dienThoai => {
+            const p = document.createElement('p');
+            p.textContent = dienThoai.toString();
+            danhSachDiv.appendChild(p);
+        });
+    }
+</script>
+</body>
+</html>

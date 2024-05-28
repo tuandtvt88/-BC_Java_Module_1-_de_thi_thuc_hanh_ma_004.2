@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function countUppercaseChars(str) {
+        var count = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str[i] >= 'A' && str[i] <= 'Z') {
+                count++;
+            }
+        }
+        if (count === 0) {
+            return "The Strings is not contain upper char";
+        } else {
+            return count;
+        }
+    }
+
+    var str = prompt("Truyền vào một chuỗi các ký tự:");
+     document.write(countUppercaseChars(str) + "<br>");
+</script>
+</body>
+</html>

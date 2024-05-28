@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var array = [];
+    var input = prompt("Nhập các phần tử của mảng phân tách nhau bằng dấu phẩy , :");
+    array = input.split(",").map(Number);
+
+    if (array.length <= 20) {
+        var sumEven = 0;
+        var sumOdd = 0;
+
+        for (var i=0; i<array.length; i++) {
+            if (array[i] % 2 == 0) {
+                sumEven += array[i];
+            }
+            else {
+                sumOdd += array[i];
+            }
+        }
+
+        document.write("Mảng: " + array.join(", "));
+        document.write("<br>");
+        document.write("Hiệu của tổng số chẵn và tổng số lẻ: " + (sumEven - sumOdd));
+
+    } else {
+        document.write("Mảng không được vượt quá 20 phần tử");
+    }
+</script>
+</body>
+</html>

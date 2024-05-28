@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sắp xếp nguyên tố tăng dần</title>
+</head>
+<body>
+<h1>Tìm Số Nguyên Tố Trong Mảng</h1>
+<div id="output"></div>
+
+<script>
+
+  function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
+
+  function timSoNguyenTo(mang) {
+    return mang.filter(isPrime).sort((a, b) => a - b);
+  }
+
+
+  function nhapMang() {
+    let n;
+    do {
+      n = parseInt(prompt("Nhập số phần tử của mảng (n <= 20): "), 10);
+    } while (isNaN(n) || n > 20 || n <= 0);
+
+    const mang = [];
+    for (let i = 0; i < n; i++) {
+      let phanTu;
+      do {
+        phanTu = parseInt(prompt(`Phần tử thứ ${i + 1}: `), 10);
+      } while (isNaN(phanTu));
+      mang.push(phanTu);
+    }
+    return mang;
+  }
+
+
+  function main() {
+    const mang = nhapMang();
+
+
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = "<p>Danh sách các phần tử của mảng: " + mang.join(', ') + "</p>";
+
+
+    const mangSoNguyenTo = timSoNguyenTo(mang);
+    outputDiv.innerHTML += "<p>Mảng các số nguyên tố (sắp xếp tăng dần): " + mangSoNguyenTo.join(', ') + "</p>";
+  }
+
+
+  main();
+</script>
+</body>
+</html>
